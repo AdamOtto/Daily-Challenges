@@ -18,11 +18,26 @@ def Solve(maze, start, end):
     #steps = [[0]*len(maze)]*len(maze[0])
     #print(start)
     steps[start[0]][start[1]] = 1
-    print(steps)
+    #print(steps)
     neigh = getNeighboors(maze, steps, start)
-    print(neigh)
-    
-    
+    #print(neigh)
+    for x in neigh:
+        steps[x[0]][x[1]] = steps[start[0]][start[1]] + 1
+    #print(steps)
+    for x in neigh:
+        SolveHelper(maze, x, end, steps)
+
+def SolveHelper(maze, cur, end, steps):
+    if cur == end:
+        print(str(steps[cur[0]][cur[1]] - 1))
+        print(steps)
+    neigh = getNeighboors(maze, steps, cur)
+    for x in neigh:
+        steps[x[0]][x[1]] = steps[cur[0]][cur[1]] + 1
+    #print(steps)
+    for x in neigh:
+        SolveHelper(maze, x, end, steps)
+
 def getNeighboors(maze, steps, loc):
     retVal = []
     if loc[0] - 1 >= 0 and maze[loc[0] - 1][loc[1]] is False and steps[loc[0] - 1][loc[1]] == 0:
@@ -42,6 +57,6 @@ in1 = [[False, False, False, False],
 [False, False, False, False],
 [False, False, False, False]]
 
-start = (3,2)
+start = (3,0)
 end = (0,0)
 Solve(in1, start, end)
