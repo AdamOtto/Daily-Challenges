@@ -6,8 +6,8 @@ You can only swap elements of the array.
 
 def Sol (in1):
     Ri = 0
-    Gi = 1
-    Bi = 2
+    Gi = 0
+    Bi = 0
     i  = 0
     
     while i < len(in1):
@@ -53,5 +53,5 @@ def swap(l, pos1, pos2):
     
     
 #in1 = ['G', 'B', 'R', 'R', 'B', 'R', 'G']
-in1 = ['G', 'B', 'G', 'R', 'R', 'B', 'R', 'B', 'G']
+in1 = ['G','B','B','B','G','G', 'R','R','R']
 Sol(in1)
