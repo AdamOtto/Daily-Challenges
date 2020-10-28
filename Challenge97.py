@@ -23,11 +23,12 @@ class keyTime:
             self.d[key].append( (value,time) )
         else:
             temp = self.d[key]
+            i = 0
             for val,t in temp:
                 if time == t:
-                    i = temp.index( (val,t) )
                     self.d[key][i] = (value, time)
                     return
+                i += 1
             self.d[key].append( (value, time) )
                 
                 
