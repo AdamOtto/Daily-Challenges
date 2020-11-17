@@ -15,9 +15,14 @@ def Solutions(in1):
             thigh = i[0]
         if i[1] < tlow:
             tlow = i[1]
+    
+    if tlow > thigh:
+        return (tlow - 1, tlow)
+    
     return (tlow, thigh)
     
 #in1 = [ (0,3), (2,6), (3,4), (6,9) ]
-in1 = [ (200,300), (0,3),(1,4),(2,5), (57, 94) ]
+#in1 = [ (200,300), (0,3),(1,4),(2,5), (57, 94) ]
+in1 = [ (1,5),(2,6), (3,5) ]
 t = Solutions(in1)
 print(t)
