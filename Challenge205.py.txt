@@ -1,0 +1,33 @@
+"""
+Given an integer, find the next permutation of it in absolute order.
+For example, given 48975, the next permutation would be 49578.
+"""
+# Lazy solution
+def Solution(num):
+    sNum = str(num)
+    d1 = {}
+    for s in sNum:
+        if s in d1:
+            d1[s] += 1
+        else:
+            d1[s] = 1
+    
+    if len(d1) == 1:
+        return num
+    
+    t = num
+    s2Num = str(t)
+    d2 = {}
+    while not d1 == d2:
+        d2 = {}
+        t += 1
+        s2Num = str(t)
+        for s in s2Num:
+            if s in d2:
+                d2[s] += 1
+            else:
+                d2[s] = 1
+    return t
+
+in1 = 534976
+print(Solution(in1))
