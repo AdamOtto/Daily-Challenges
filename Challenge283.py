@@ -49,15 +49,6 @@ def valIsDivisorOf60(i, j, k, val):
             return True
     return False
 
-def getNextMin(n2, n3, n5, val):
-    if val == n2:
-        return min(n3, n5)
-    if val == n3:
-        return min(n2, n5)
-    if val == n5:
-        return min(n2, n3)
-        
-
 t = Solution(30)
 print(str(len(t)) + ": " + str(t))
 print()
