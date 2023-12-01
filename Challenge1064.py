@@ -1,45 +1,30 @@
 """
-Given a array that's sorted but rotated at some unknown pivot,
-in which all elements are distinct, find a "peak" element in O(log N) time.
-
-An element is considered a peak if it is greater than both its left and right neighbors.
-It is guaranteed that the first and last elements are lower than all others.
+Using a function rand7() that returns an integer from 1 to 7 (inclusive) with uniform probability.
+Implement a function rand5() that returns an integer from 1 to 5 (inclusive).
 """
+import random
 
-def Solution(ar):
-    l = len(ar)
-    low = 0
-    high = l - 1
-    mid = int((low + high) / 2)
-    
-    while low != high:
-        if ar[mid] > ar[mid - 1] and ar[mid] > ar[mid + 1]:
-            return ar[mid]
-        else:
-            if ar[mid] < ar[mid + 1]:
-                low = mid
-            elif ar[mid - 1] > ar[mid]:
-                high = mid
-            mid = int((low + high) / 2)
-    return False
+def rand5():
+    return random.randint(1, 5)
 
+def rand25():
+    return (5 * (rand5() - 1)) + rand5()
 
-# Returns 8
-in1 = [1,2,3,4,8,7,6,5]
-print(Solution(in1))
+def rand7():
+    t = 25
+    while t > 7:
+        t = rand25()
+    return t
 
-# Returns 8
-in1 = [1,2,3,4,5,6,8,7]
-print(Solution(in1))
-
-# Returns 25
-in1 = [1,2,3,4,5,6,7,8,9,10,11,12,13,25,24,23,22,21,20,19,18,17,16,15,14]
-print(Solution(in1))
-
-# Returns 1000
-in1 = []
-for i in range(1,250 + 1):
-    in1.append(i)
-for i in reversed(range(251, 1000 + 1)):
-    in1.append(i)
-print(Solution(in1))
+# Return a uniform random generator from 1 to 7 inclusive.
+d = {}
+for i in range(100000):
+    t = rand7()
+    if t not in d:
+        d[t] = 0
+    d[t] += 1
+s = 0
+for key, val in d.items():
+    s += val
+for key, val in d.items():
+    print(str(key) + ": " + str(val / s))
